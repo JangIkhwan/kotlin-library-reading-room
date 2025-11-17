@@ -10,6 +10,10 @@ class ApplicationTest : NsTest() {
     fun `사용자 메뉴 번호는 숫자여야 한다`(){
         assertSimpleTest {
             run("1")
+            assertThat(output()).contains("사용자 프롬프트",
+                "1. 도서관 좌석 조회",
+                "2. 좌석 배정",
+                "3. 좌석 반납")
             assertThat(output()).doesNotContain(ERROR_MESSAGE)
         }
     }
