@@ -7,10 +7,11 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {url 'https://jitpack.io' }
 }
 
 dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    implementation 'com.github.woowacourse-projects:mission-utils:1.2.0'
 }
 
 test {
