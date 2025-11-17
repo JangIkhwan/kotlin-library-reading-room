@@ -42,6 +42,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 프롬프트에서 1번을 입력하면 열람실 좌석 현황을 출력한다`(){
+        assertSimpleTest {
+            run("1")
+            assertThat(output()).contains("열람실 좌석 현황")
+            assertThat(output()).doesNotContain(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
