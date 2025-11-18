@@ -9,6 +9,6 @@ class ReadingRoom(size: Int) {
     }
 
     fun getSeatAvailability(): Array<Boolean> {
-        return seats
+        return seats.copyOf()
     }
 }
