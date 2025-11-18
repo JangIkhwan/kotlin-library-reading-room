@@ -10,8 +10,8 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
         inputView.printMenu()
         val option: MenuOption = inputView.getOption()
         if(option == MenuOption(1)){
-            val availablities = readingRoom.getSeatAvailability()
-            outputView.printSeatAvailability(availablities)
+            val availablities = readingRoom.getSeatAvailabilities()
+            outputView.printSeatAvailabilities(availablities)
         }
     }
 }

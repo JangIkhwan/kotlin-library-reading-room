@@ -1,7 +1,7 @@
 package library.view
 
 class UserOutputView{
-    fun printSeatAvailability(availabilities : Array<Boolean>){
+    fun printSeatAvailabilities(availabilities : Array<Boolean>){
         println("열람실 좌석 현황")
         for(i in 0..availabilities.size - 1){
             print("${i + 1}:")

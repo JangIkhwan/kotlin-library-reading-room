@@ -8,7 +8,7 @@ class ReadingRoom(size: Int) {
         seats = Array<Boolean>(size) { false }
     }
 
-    fun getSeatAvailability(): Array<Boolean> {
+    fun getSeatAvailabilities(): Array<Boolean> {
         return seats.copyOf()
     }
 }
