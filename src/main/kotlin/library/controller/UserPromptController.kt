@@ -10,19 +10,26 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
         inputView.printMenu()
         val option: MenuOption = inputView.getOption()
         if(option == MenuOption(1)){
-            val availablities = readingRoom.getSeatAvailabilities()
-            outputView.printSeatAvailabilities(availablities)
+            showSeatAvailablilites()
         }
         if(option == MenuOption(2)){
-            val seatNumber = inputView.getSeatToReserve()
-            try{
-                readingRoom.reserve(seatNumber)
-                outputView.reserveSuccess()
-            }
-            catch (e : RuntimeException){
-                outputView.printError(e)
-            }
+            reserveSeat()
         }
+    }
 
+    private fun showSeatAvailablilites(){
+        val availablities = readingRoom.getSeatAvailabilities()
+        outputView.printSeatAvailabilities(availablities)
+    }
+
+    private fun reserveSeat(){
+        val seatNumber = inputView.getSeatToReserve()
+        try{
+            readingRoom.reserve(seatNumber)
+            outputView.reserveSuccess()
+        }
+        catch (e : RuntimeException){
+            outputView.printError(e)
+        }
     }
 }
