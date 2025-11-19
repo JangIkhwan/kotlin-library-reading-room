@@ -33,14 +33,14 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
 
     private fun reserveSeat(){
         val userId = 1L
+        val reservedSeat: SeatNumber? = readingRoom.findReservedSeat(userId)
+        if(reservedSeat != null){
+            outputView.printMessage("배정받은 좌석이 존재합니다")
+            return
+        }
         val seatNumber = inputView.getSeatToReserve()
-        try{
-            readingRoom.reserveSeat(userId, seatNumber)
-            outputView.reserveSuccess()
-        }
-        catch (e : RuntimeException){
-            outputView.printError(e)
-        }
+        readingRoom.reserveSeat(userId, seatNumber)
+        outputView.reserveSuccess()
     }
 
     private fun returnSeat() {

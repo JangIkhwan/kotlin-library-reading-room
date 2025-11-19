@@ -13,9 +13,9 @@ class ReadingRoom(size: Int) {
     }
 
     fun reserveSeat(userId: Long, seatNumber: SeatNumber) {
+        validateUserAlreadyReserved(userId)
         validateNumberRange(seatNumber)
         validateSeatAvailability(seatNumber)
-        validateUserAlreadyReserved(userId)
 
         seats[seatNumber.toIndex()].reserve(userId)
     }

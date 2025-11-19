@@ -28,8 +28,8 @@ class UserInputView (val userInputParser : UserInputParser){
     }
 
     fun getSeatToReserve(): SeatNumber {
+        println("좌석 배정")
         while(true){
-            println("좌석 배정")
             print("좌석번호를 입력하세요> ")
             val number: String = Console.readLine()
             try{
