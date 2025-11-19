@@ -13,5 +13,16 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
             val availablities = readingRoom.getSeatAvailabilities()
             outputView.printSeatAvailabilities(availablities)
         }
+        if(option == MenuOption(2)){
+            val seatNumber = inputView.getSeatToReserve()
+            try{
+                readingRoom.reserve(seatNumber)
+                outputView.reserveSuccess()
+            }
+            catch (e : RuntimeException){
+                outputView.printError(e)
+            }
+        }
+
     }
 }

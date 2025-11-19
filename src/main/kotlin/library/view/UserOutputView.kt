@@ -16,4 +16,12 @@ class UserOutputView{
             }
         }
     }
+
+    fun reserveSuccess() {
+        println("좌석 배정이 완료되었습니다")
+    }
+
+    fun printError(e: RuntimeException) {
+        println(e.message)
+    }
 }

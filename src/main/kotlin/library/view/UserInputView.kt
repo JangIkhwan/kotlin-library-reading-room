@@ -2,6 +2,7 @@ package library.view
 
 import camp.nextstep.edu.missionutils.Console
 import library.model.MenuOption
+import library.model.SeatNumber
 
 class UserInputView (val userInputParser : UserInputParser){
     fun printMenu(){
@@ -20,6 +21,20 @@ class UserInputView (val userInputParser : UserInputParser){
                 return option
             }
             catch(e : RuntimeException){
+                println(e.message)
+            }
+        }
+    }
+
+    fun getSeatToReserve(): SeatNumber {
+        while(true){
+            println("좌석 배정")
+            print("좌석번호를 입력하세요> ")
+            val number: String = Console.readLine()
+            try{
+                return SeatNumber(number.toInt())
+            }
+            catch (e : RuntimeException){
                 println(e.message)
             }
         }
