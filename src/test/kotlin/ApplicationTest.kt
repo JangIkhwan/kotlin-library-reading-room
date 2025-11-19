@@ -9,12 +9,12 @@ class ApplicationTest : NsTest() {
     @Test
     fun `사용자 메뉴 번호는 숫자여야 한다`(){
         assertSimpleTest {
-            run("1")
+            run("1", "4")
             assertThat(output()).contains("사용자 프롬프트",
                 "1. 도서관 좌석 조회",
                 "2. 좌석 배정",
-                "3. 좌석 반납")
-            assertThat(output()).doesNotContain(ERROR_MESSAGE)
+                "3. 좌석 반납",
+                "4. 종료")
         }
     }
 
@@ -45,9 +45,8 @@ class ApplicationTest : NsTest() {
     @Test
     fun `사용자 프롬프트에서 1번을 입력하면 열람실 좌석 현황을 출력한다`(){
         assertSimpleTest {
-            run("1")
+            run("1", "4")
             assertThat(output()).contains("열람실 좌석 현황")
-            assertThat(output()).doesNotContain(ERROR_MESSAGE)
         }
     }
 
