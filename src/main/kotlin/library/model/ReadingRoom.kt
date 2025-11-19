@@ -15,6 +15,9 @@ class ReadingRoom(size: Int) {
     }
 
     fun reserve(seatNumber: SeatNumber) {
+        if(seatNumber.toIndex() >= seats.size){
+            throw IllegalArgumentException("[ERROR] 존재하지 않는 좌석입니다.")
+        }
         if(seats[seatNumber.toIndex()]){
             throw IllegalArgumentException("[ERROR] 이미 예약된 좌석입니다.")
         }
