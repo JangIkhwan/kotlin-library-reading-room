@@ -7,13 +7,15 @@ import library.view.UserOutputView
 
 class UserPromptController(val inputView: UserInputView, val readingRoom: ReadingRoom, val outputView: UserOutputView) {
     fun run(){
-        inputView.printMenu()
-        val option: MenuOption = inputView.getOption()
-        if(option == MenuOption(1)){
-            showSeatAvailablilites()
-        }
-        if(option == MenuOption(2)){
-            reserveSeat()
+        while(true){
+            inputView.printMenu()
+            val option: MenuOption = inputView.getOption()
+            if(option == MenuOption(1)){
+                showSeatAvailablilites()
+            }
+            if(option == MenuOption(2)){
+                reserveSeat()
+            }
         }
     }
 
