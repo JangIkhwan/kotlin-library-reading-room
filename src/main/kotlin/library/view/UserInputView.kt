@@ -10,6 +10,7 @@ class UserInputView (val userInputParser : UserInputParser){
         println("1. 도서관 좌석 조회")
         println("2. 좌석 배정")
         println("3. 좌석 반납")
+        println("4. 종료")
     }
 
     fun getOption(): MenuOption{

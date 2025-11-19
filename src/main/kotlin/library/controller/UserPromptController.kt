@@ -16,6 +16,9 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
             if(option == MenuOption(2)){
                 reserveSeat()
             }
+            if(option == MenuOption(4)){
+                break
+            }
         }
     }
 
