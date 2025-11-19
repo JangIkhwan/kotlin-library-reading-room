@@ -11,10 +11,10 @@ class ReadingRoomTest {
         // given
         val readingRoom = ReadingRoom(50)
         val seatNumber = SeatNumber(1)
-        readingRoom.reserve(seatNumber)
+        readingRoom.reserveSeat(1, seatNumber)
 
         // when & then
-        assertThrows<IllegalArgumentException> { readingRoom.reserve(seatNumber) }
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(2, seatNumber) }
     }
 
     @Test
@@ -24,6 +24,18 @@ class ReadingRoomTest {
         val seatNumber = SeatNumber(51)
 
         // when & then
-        assertThrows<IllegalArgumentException> { readingRoom.reserve(seatNumber) }
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(1, seatNumber) }
+    }
+
+    @Test
+    fun `좌석을 두개 이상 배정하려고 하면 예외가 발생한다`(){
+        // given
+        val readingRoom = ReadingRoom(50)
+        val oneSeatNumber = SeatNumber(1)
+        readingRoom.reserveSeat(1, oneSeatNumber)
+        val anotherSeatNumber = SeatNumber(2)
+
+        // when & then
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(1, anotherSeatNumber) }
     }
 }
