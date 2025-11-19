@@ -39,4 +39,21 @@ class ReadingRoom(size: Int) {
             }
         }
     }
+
+    fun findReservedSeat(userId: Long): SeatNumber? {
+        for(i in 0..seats.size - 1){
+            if(seats[i].hasReservedBy(userId)){
+                return SeatNumber(i + 1)
+            }
+        }
+        return null
+    }
+
+    fun returnSeat(userId: Long) {
+        val seatNumber = findReservedSeat(userId)
+        if(seatNumber == null){
+            throw IllegalArgumentException("[ERROR] 반납할 좌석이 없습니다")
+        }
+        seats[seatNumber.toIndex()].doReturn();
+    }
 }

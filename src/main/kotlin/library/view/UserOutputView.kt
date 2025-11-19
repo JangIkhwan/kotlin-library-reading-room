@@ -24,4 +24,8 @@ class UserOutputView{
     fun printError(e: RuntimeException) {
         println(e.message)
     }
+
+    fun printMessage(message: String) {
+        println(message)
+    }
 }

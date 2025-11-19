@@ -18,4 +18,8 @@ class Seat{
     fun hasReservedBy(userId: Long): Boolean{
         return this.userId == userId
     }
+
+    fun doReturn() {
+        this.userId = -1
+    }
 }

@@ -40,4 +40,19 @@ class UserInputView (val userInputParser : UserInputParser){
             }
         }
     }
+
+    fun getReturnSeatIntention(seatNumber: SeatNumber): Boolean {
+        println("좌석 반납")
+        while(true){
+            print("좌석을 반납하시겠습니까? (Y/n) > ")
+            val input: String = Console.readLine()
+            if(input == "Y"){
+                return true
+            }
+            if(input == "n"){
+                return false
+            }
+            println("[ERROR] Y 또는 n으로 입력해주세요")
+        }
+    }
 }
