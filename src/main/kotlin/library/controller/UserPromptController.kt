@@ -28,9 +28,10 @@ class UserPromptController(val inputView: UserInputView, val readingRoom: Readin
     }
 
     private fun reserveSeat(){
+        val userId = 1L
         val seatNumber = inputView.getSeatToReserve()
         try{
-            readingRoom.reserve(seatNumber)
+            readingRoom.reserveSeat(userId, seatNumber)
             outputView.reserveSuccess()
         }
         catch (e : RuntimeException){
