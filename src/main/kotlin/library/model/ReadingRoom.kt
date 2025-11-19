@@ -5,7 +5,6 @@ class ReadingRoom(size: Int) {
 
     init{
         require(size > 0, { "[ERROR] 열람실에 좌석은 1개 이상이어야 합니다." })
-//        seats = Array<Boolean>(size) { false }
         seats = Array<Seat>(size) { i -> Seat() }
     }
 
