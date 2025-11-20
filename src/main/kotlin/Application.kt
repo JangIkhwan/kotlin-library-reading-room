@@ -17,7 +17,7 @@ fun main() {
     val userOutputView = UserOutputView()
 
     var controllerMap : MutableMap<String, Controller> = mutableMapOf()
-    controllerMap.put("userPrompt", UserPromptController(userInputView))
+    controllerMap.put("userPrompt", UserPromptController(userInputView, userOutputView))
     controllerMap.put("reserveSeat", ReserverSeatController(userInputView, userOutputView, readingRoom))
     controllerMap.put("returnSeat", ReturnSeatController(userInputView, userOutputView, readingRoom))
     controllerMap.put("showSeat", ShowSeatsController(userOutputView, readingRoom))
