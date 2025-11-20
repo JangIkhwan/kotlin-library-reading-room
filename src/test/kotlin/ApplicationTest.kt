@@ -50,6 +50,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `로그인 메뉴 번호는 숫자여야 한다`(){
+        assertSimpleTest {
+            run("1")
+            assertThat(output()).contains("로그인 프롬프트",
+                "1. 회원가입",
+                "2. 로그인",
+                "3. 프로그램 종료")
+        }
+    }
+
     override fun runMain() {
         main()
     }
