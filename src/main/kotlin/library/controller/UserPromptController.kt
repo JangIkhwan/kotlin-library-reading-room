@@ -1,11 +1,9 @@
 package library.controller
 
 import library.model.MenuOption
-import library.model.ReadingRoom
 import library.view.UserInputView
-import library.view.UserOutputView
 
-class UserPromptController(val inputView: UserInputView, val readingRoom: ReadingRoom, val outputView: UserOutputView) : Controller {
+class UserPromptController(val inputView: UserInputView) : Controller {
     var commandMap: MutableMap<MenuOption, String>
 
     init{

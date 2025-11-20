@@ -5,7 +5,7 @@ import library.model.SeatNumber
 import library.view.UserInputView
 import library.view.UserOutputView
 
-class ReturnSeatController(val inputView: UserInputView, val readingRoom: ReadingRoom, val outputView: UserOutputView) :
+class ReturnSeatController(val inputView: UserInputView, val outputView: UserOutputView, val readingRoom: ReadingRoom) :
     Controller {
     override fun run() : String{
         val userId = 1L
