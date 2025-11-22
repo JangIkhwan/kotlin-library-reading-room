@@ -1,6 +1,7 @@
 package library.library.model
 
 import library.model.CustomClock
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.time.LocalDateTime
@@ -20,5 +21,15 @@ class CustomClockTest {
         val pastTime: String = "2025-11-22 08:00:00"
 
         assertThrows<IllegalArgumentException> { customClock.updateTime(pastTime) }
+    }
+
+    @Test
+    fun `올바른 시간을 입력하면 시계의 시간이 변경된다`(){
+        val futureTime: String = "2025-11-22 13:00:00"
+
+        customClock.updateTime(futureTime)
+        val time = customClock.getTime()
+
+        assertThat(time).isEqualTo(futureTime)
     }
 }
