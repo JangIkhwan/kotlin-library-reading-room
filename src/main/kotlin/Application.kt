@@ -2,12 +2,14 @@ package library
 
 import library.controller.Controller
 import library.controller.LoginAndSignupPromptController
+import library.controller.LoginController
 import library.controller.UserPromptController
 import library.controller.ReserverSeatController
 import library.controller.ReturnSeatController
 import library.controller.ShowSeatsController
 import library.controller.SignupController
 import library.controller.constant.Command
+import library.model.CustomClock
 import library.service.SignupService
 import library.model.ReadingRoom
 import library.repository.UserRepository
@@ -16,6 +18,7 @@ import library.view.LoginAndSignupOutputView
 import library.view.UserInputParser
 import library.view.UserInputView
 import library.view.UserOutputView
+import java.time.LocalDateTime
 
 
 fun main() {
@@ -25,6 +28,9 @@ fun main() {
     val loginAndSignupInputView = LoginAndSignupInputView()
     val loginAndSignupOutputView = LoginAndSignupOutputView()
     val userRepository = UserRepository()
+    val clock = CustomClock(
+        LocalDateTime.now()
+    )
 
     var controllerMap : MutableMap<Command, Controller> = mutableMapOf()
     controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
@@ -33,8 +39,9 @@ fun main() {
     controllerMap.put(Command.SHOW_SEATS, ShowSeatsController(userOutputView, readingRoom))
     controllerMap.put(Command.LOGIN_PROMPT, LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
     controllerMap.put(Command.SIGNUP,
-        SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository))
+        SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository), clock)
     )
+    controllerMap.put(Command.LOGIN, LoginController())
 
     var command : Command? = Command.LOGIN_PROMPT
     while(true){

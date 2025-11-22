@@ -2,8 +2,11 @@ package library.view
 
 import camp.nextstep.edu.missionutils.Console
 import library.model.MenuOption
+import java.time.format.DateTimeFormatter
 
 class LoginAndSignupInputView {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+
     fun getOption(): MenuOption {
         while(true){
             print("선택하세요 > ")
