@@ -13,7 +13,7 @@ class UserPromptController(val inputView: UserInputView, val outputView: UserOut
         commandMap.put(MenuOption(1), Command.SHOW_SEATS)
         commandMap.put(MenuOption(2), Command.RESERVE_SEAT)
         commandMap.put(MenuOption(3), Command.RETURN_SEAT)
-        commandMap.put(MenuOption(4), Command.EXIT)
+        commandMap.put(MenuOption(4), Command.LOGIN_PROMPT)
     }
 
     override fun run(): Command {

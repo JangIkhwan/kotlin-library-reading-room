@@ -12,7 +12,7 @@ class ReadingRoom(size: Int) {
         return seats.map { seat -> seat.isAvailable() }.toList()
     }
 
-    fun reserveSeat(userId: Long, seatNumber: SeatNumber) {
+    fun reserveSeat(userId: String, seatNumber: SeatNumber) {
         validateUserAlreadyReserved(userId)
         validateNumberRange(seatNumber)
         validateSeatAvailability(seatNumber)
@@ -32,7 +32,7 @@ class ReadingRoom(size: Int) {
         }
     }
 
-    private fun validateUserAlreadyReserved(userId: Long) {
+    private fun validateUserAlreadyReserved(userId: String) {
         for(seat in seats){
             if(seat.hasReservedBy(userId)){
                 throw IllegalArgumentException("[ERROR] 이미 예약한 좌석이 존재합니다.")
@@ -40,7 +40,7 @@ class ReadingRoom(size: Int) {
         }
     }
 
-    fun findReservedSeat(userId: Long): SeatNumber? {
+    fun findReservedSeat(userId: String): SeatNumber? {
         for(i in 0..seats.size - 1){
             if(seats[i].hasReservedBy(userId)){
                 return SeatNumber(i + 1)
@@ -49,7 +49,7 @@ class ReadingRoom(size: Int) {
         return null
     }
 
-    fun returnSeat(userId: Long) {
+    fun returnSeat(userId: String) {
         val seatNumber = findReservedSeat(userId)
         if(seatNumber == null){
             throw IllegalArgumentException("[ERROR] 반납할 좌석이 없습니다")

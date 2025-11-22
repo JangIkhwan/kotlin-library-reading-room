@@ -37,8 +37,8 @@ fun main() {
 
     var controllerMap : MutableMap<Command, Controller> = mutableMapOf()
     controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
-    controllerMap.put(Command.RESERVE_SEAT, ReserverSeatController(userInputView, userOutputView, readingRoom))
-    controllerMap.put(Command.RETURN_SEAT, ReturnSeatController(userInputView, userOutputView, readingRoom))
+    controllerMap.put(Command.RESERVE_SEAT, ReserverSeatController(userInputView, userOutputView, readingRoom, loginService))
+    controllerMap.put(Command.RETURN_SEAT, ReturnSeatController(userInputView, userOutputView, readingRoom, loginService))
     controllerMap.put(Command.SHOW_SEATS, ShowSeatsController(userOutputView, readingRoom))
     controllerMap.put(Command.LOGIN_PROMPT, LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
     controllerMap.put(Command.SIGNUP,

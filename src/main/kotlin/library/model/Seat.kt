@@ -1,25 +1,25 @@
 package library.model
 
 class Seat{
-    private var userId: Long
+    private var userId: String?
 
     constructor() {
-        userId = -1
+        userId = null
     }
 
     fun isAvailable(): Boolean{
-        return userId == -1L
+        return userId == null
     }
 
-    fun reserve(userId: Long) {
+    fun reserve(userId: String) {
         this.userId = userId
     }
 
-    fun hasReservedBy(userId: Long): Boolean{
+    fun hasReservedBy(userId: String): Boolean{
         return this.userId == userId
     }
 
     fun doReturn() {
-        this.userId = -1
+        this.userId = null
     }
 }
