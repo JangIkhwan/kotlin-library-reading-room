@@ -1,6 +1,6 @@
 package library.model
 
-class User(val id: String, name: String, password: String) {
+class User(val id: String, val name: String,  val password: String) {
     init{
         validateName(name)
         validatePassword(password)
@@ -17,5 +17,9 @@ class User(val id: String, name: String, password: String) {
         if(!passwordRegex.matches(password)){
             throw IllegalArgumentException("[ERROR] 비밀번호는 영어대소문자와 숫자만 포함해야하며 길이는 4이상 8이하여야 합니다")
         }
+    }
+
+    fun hasSamePassword(password: String): Boolean {
+        return this.password == password
     }
 }

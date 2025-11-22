@@ -23,4 +23,13 @@ class LoginAndSignupOutputView {
         println("회원가입을 진행합니다")
         println("시스템이 기억하는 마지막 시간은 " + time + "입니다")
     }
+
+    fun printLoginBeginning(time: String) {
+        println("로그인을 진행합니다")
+        println("시스템이 기억하는 마지막 시간은 " + time + "입니다")
+    }
+
+    fun printLoginSucceed(loginedUserName: String) {
+        println(loginedUserName + "님 환영합니다")
+    }
 }

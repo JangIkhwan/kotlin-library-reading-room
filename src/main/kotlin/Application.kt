@@ -13,6 +13,7 @@ import library.model.CustomClock
 import library.service.SignupService
 import library.model.ReadingRoom
 import library.repository.UserRepository
+import library.service.LoginService
 import library.view.LoginAndSignupInputView
 import library.view.LoginAndSignupOutputView
 import library.view.UserInputParser
@@ -31,6 +32,8 @@ fun main() {
     val clock = CustomClock(
         LocalDateTime.now()
     )
+    val loginService = LoginService(userRepository)
+
 
     var controllerMap : MutableMap<Command, Controller> = mutableMapOf()
     controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
@@ -41,7 +44,8 @@ fun main() {
     controllerMap.put(Command.SIGNUP,
         SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository), clock)
     )
-    controllerMap.put(Command.LOGIN, LoginController())
+    controllerMap.put(Command.LOGIN, LoginController(loginAndSignupInputView, loginAndSignupOutputView,
+        loginService, clock))
 
     var command : Command? = Command.LOGIN_PROMPT
     while(true){
