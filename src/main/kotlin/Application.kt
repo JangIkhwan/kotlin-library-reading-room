@@ -6,7 +6,10 @@ import library.controller.UserPromptController
 import library.controller.ReserverSeatController
 import library.controller.ReturnSeatController
 import library.controller.ShowSeatsController
+import library.controller.SignupController
+import library.service.SignupService
 import library.model.ReadingRoom
+import library.repository.UserRepository
 import library.view.LoginAndSignupInputView
 import library.view.LoginAndSignupOutputView
 import library.view.UserInputParser
@@ -20,6 +23,7 @@ fun main() {
     val userOutputView = UserOutputView()
     val loginAndSignupInputView = LoginAndSignupInputView()
     val loginAndSignupOutputView = LoginAndSignupOutputView()
+    val userRepository = UserRepository()
 
     var controllerMap : MutableMap<String, Controller> = mutableMapOf()
     controllerMap.put("userPrompt", UserPromptController(userInputView, userOutputView))
@@ -27,6 +31,9 @@ fun main() {
     controllerMap.put("returnSeat", ReturnSeatController(userInputView, userOutputView, readingRoom))
     controllerMap.put("showSeat", ShowSeatsController(userOutputView, readingRoom))
     controllerMap.put("loginPrompt", LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
+    controllerMap.put("signup", SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(
+        userRepository
+    )))
 
     var command : String? = "loginPrompt"
     while(true){
@@ -36,5 +43,6 @@ fun main() {
             break
         }
     }
+
 }
 

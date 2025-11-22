@@ -3,7 +3,7 @@ package library.view
 import camp.nextstep.edu.missionutils.Console
 import library.model.MenuOption
 
-class LoginAndSignupInputView (){
+class LoginAndSignupInputView {
     fun getOption(): MenuOption {
         while(true){
             print("선택하세요 > ")
