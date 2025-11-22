@@ -1,21 +1,22 @@
 package library.controller
 
+import library.controller.constant.Command
 import library.model.MenuOption
 import library.view.UserInputView
 import library.view.UserOutputView
 
 class UserPromptController(val inputView: UserInputView, val outputView: UserOutputView) : Controller {
-    var commandMap: MutableMap<MenuOption, String>
+    var commandMap: MutableMap<MenuOption, Command>
 
     init{
-        commandMap = mutableMapOf<MenuOption, String>()
-        commandMap.put(MenuOption(1), "showSeat")
-        commandMap.put(MenuOption(2), "reserveSeat")
-        commandMap.put(MenuOption(3), "returnSeat")
-        commandMap.put(MenuOption(4), "exit")
+        commandMap = mutableMapOf<MenuOption, Command>()
+        commandMap.put(MenuOption(1), Command.SHOW_SEATS)
+        commandMap.put(MenuOption(2), Command.RESERVE_SEAT)
+        commandMap.put(MenuOption(3), Command.RETURN_SEAT)
+        commandMap.put(MenuOption(4), Command.EXIT)
     }
 
-    override fun run(): String {
+    override fun run(): Command {
         var option: MenuOption? = null;
         while(true){
             inputView.printMenu()
@@ -25,6 +26,6 @@ class UserPromptController(val inputView: UserInputView, val outputView: UserOut
             }
             outputView.printMessage("[ERROR] 존재하지 않는 메뉴 번호입니다")
         }
-        return commandMap.getOrDefault(option, "exit")
+        return commandMap.getOrDefault(option, Command.EXIT)
     }
 }

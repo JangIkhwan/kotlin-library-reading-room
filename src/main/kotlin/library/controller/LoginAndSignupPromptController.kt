@@ -1,20 +1,21 @@
 package library.controller
 
+import library.controller.constant.Command
 import library.model.MenuOption
 import library.view.LoginAndSignupInputView
 import library.view.LoginAndSignupOutputView
 
 class LoginAndSignupPromptController(val inputView: LoginAndSignupInputView, val outputView: LoginAndSignupOutputView) : Controller{
-    val commandMap: MutableMap<MenuOption, String>
+    val commandMap: MutableMap<MenuOption, Command>
 
     init{
         commandMap = mutableMapOf()
-        commandMap.put(MenuOption(1), "signup")
-        commandMap.put(MenuOption(2), "login")
-        commandMap.put(MenuOption(3), "exit")
+        commandMap.put(MenuOption(1), Command.SIGNUP)
+        commandMap.put(MenuOption(2), Command.LOGIN)
+        commandMap.put(MenuOption(3), Command.EXIT)
     }
 
-    override fun run(): String {
+    override fun run(): Command {
         var option: MenuOption? = null
         while(true){
             outputView.printMenu()
@@ -24,6 +25,6 @@ class LoginAndSignupPromptController(val inputView: LoginAndSignupInputView, val
             }
             outputView.printMessage("[ERROR] 존재하지 않는 메뉴 번호입니다");
         }
-        return commandMap.getOrDefault(option, "exit")
+        return commandMap.getOrDefault(option, Command.EXIT)
     }
 }

@@ -7,6 +7,7 @@ import library.controller.ReserverSeatController
 import library.controller.ReturnSeatController
 import library.controller.ShowSeatsController
 import library.controller.SignupController
+import library.controller.constant.Command
 import library.service.SignupService
 import library.model.ReadingRoom
 import library.repository.UserRepository
@@ -25,21 +26,21 @@ fun main() {
     val loginAndSignupOutputView = LoginAndSignupOutputView()
     val userRepository = UserRepository()
 
-    var controllerMap : MutableMap<String, Controller> = mutableMapOf()
-    controllerMap.put("userPrompt", UserPromptController(userInputView, userOutputView))
-    controllerMap.put("reserveSeat", ReserverSeatController(userInputView, userOutputView, readingRoom))
-    controllerMap.put("returnSeat", ReturnSeatController(userInputView, userOutputView, readingRoom))
-    controllerMap.put("showSeat", ShowSeatsController(userOutputView, readingRoom))
-    controllerMap.put("loginPrompt", LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
-    controllerMap.put("signup", SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(
-        userRepository
-    )))
+    var controllerMap : MutableMap<Command, Controller> = mutableMapOf()
+    controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
+    controllerMap.put(Command.RESERVE_SEAT, ReserverSeatController(userInputView, userOutputView, readingRoom))
+    controllerMap.put(Command.RETURN_SEAT, ReturnSeatController(userInputView, userOutputView, readingRoom))
+    controllerMap.put(Command.SHOW_SEATS, ShowSeatsController(userOutputView, readingRoom))
+    controllerMap.put(Command.LOGIN_PROMPT, LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
+    controllerMap.put(Command.SIGNUP,
+        SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository))
+    )
 
-    var command : String? = "loginPrompt"
+    var command : Command? = Command.LOGIN_PROMPT
     while(true){
         val controller: Controller? = controllerMap.get(command)
         command = controller?.run()
-        if(command == "exit" || command == null){
+        if(command == Command.EXIT || command == null){
             break
         }
     }
