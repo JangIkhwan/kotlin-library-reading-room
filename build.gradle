@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.2.0'
+    testImplementation("io.mockk:mockk:1.13.5")
 }
 
 test {
