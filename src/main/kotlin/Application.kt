@@ -21,8 +21,7 @@ import library.view.UserInputView
 import library.view.UserOutputView
 import java.time.LocalDateTime
 
-
-fun main() {
+class LibraryApplication {
     val userInputView = UserInputView(UserInputParser())
     val readingRoom = ReadingRoom(50)
     val userOutputView = UserOutputView()
@@ -33,28 +32,35 @@ fun main() {
         LocalDateTime.now()
     )
     val loginService = LoginService(userRepository)
-
-
     var controllerMap : MutableMap<Command, Controller> = mutableMapOf()
-    controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
-    controllerMap.put(Command.RESERVE_SEAT, ReserverSeatController(userInputView, userOutputView, readingRoom, loginService))
-    controllerMap.put(Command.RETURN_SEAT, ReturnSeatController(userInputView, userOutputView, readingRoom, loginService))
-    controllerMap.put(Command.SHOW_SEATS, ShowSeatsController(userOutputView, readingRoom, loginService))
-    controllerMap.put(Command.LOGIN_PROMPT, LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
-    controllerMap.put(Command.SIGNUP,
-        SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository), clock)
-    )
-    controllerMap.put(Command.LOGIN, LoginController(loginAndSignupInputView, loginAndSignupOutputView,
-        loginService, clock))
 
-    var command : Command? = Command.LOGIN_PROMPT
-    while(true){
-        val controller: Controller? = controllerMap.get(command)
-        command = controller?.run()
-        if(command == Command.EXIT || command == null){
-            break
-        }
+    init{
+        controllerMap.put(Command.USER_PROMPT, UserPromptController(userInputView, userOutputView))
+        controllerMap.put(Command.RESERVE_SEAT, ReserverSeatController(userInputView, userOutputView, readingRoom, loginService))
+        controllerMap.put(Command.RETURN_SEAT, ReturnSeatController(userInputView, userOutputView, readingRoom, loginService))
+        controllerMap.put(Command.SHOW_SEATS, ShowSeatsController(userOutputView, readingRoom, loginService))
+        controllerMap.put(Command.LOGIN_PROMPT, LoginAndSignupPromptController(loginAndSignupInputView, loginAndSignupOutputView))
+        controllerMap.put(Command.SIGNUP,
+            SignupController(loginAndSignupInputView, loginAndSignupOutputView, SignupService(userRepository), clock)
+        )
+        controllerMap.put(Command.LOGIN, LoginController(loginAndSignupInputView, loginAndSignupOutputView, loginService, clock))
     }
 
+    fun run(){
+        var command : Command? = Command.LOGIN_PROMPT
+        while(true){
+            val controller: Controller? = controllerMap.get(command)
+            command = controller?.run()
+            if(command == Command.EXIT || command == null){
+                break
+            }
+        }
+    }
 }
+
+fun main() {
+    val application = LibraryApplication()
+    application.run()
+}
+
 

@@ -1,12 +1,12 @@
 package library.controller
 
 import library.controller.constant.Command
-import library.model.CustomClock
+import library.model.Clock
 import library.service.SignupService
 import library.view.LoginAndSignupInputView
 import library.view.LoginAndSignupOutputView
 
-class SignupController(val inputView: LoginAndSignupInputView, val outputView: LoginAndSignupOutputView, val signupService: SignupService, val clock: CustomClock) : Controller{
+class SignupController(val inputView: LoginAndSignupInputView, val outputView: LoginAndSignupOutputView, val signupService: SignupService, val clock: Clock) : Controller{
     override fun run(): Command {
         outputView.printSignupBeginning(clock.getTime())
         val studentNumber: String = inputView.readLine("학번을 입력하세요 > ")

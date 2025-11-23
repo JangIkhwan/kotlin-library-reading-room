@@ -4,10 +4,10 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
-class CustomClock (var time: LocalDateTime){
+class CustomClock (var time: LocalDateTime) : Clock {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
-    fun updateTime(currentTime: String) {
+    override fun updateTime(currentTime: String) {
         try{
             val parsedTime = LocalDateTime.parse(currentTime, formatter)
             if(parsedTime.isBefore(time)){
@@ -20,7 +20,7 @@ class CustomClock (var time: LocalDateTime){
         }
     }
 
-    fun getTime(): String{
+    override fun getTime(): String{
         return time.format(formatter)
     }
 }
