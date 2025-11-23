@@ -12,10 +12,12 @@ class ReadingRoomTest {
         // given
         val readingRoom = ReadingRoom(50)
         val seatNumber = SeatNumber(1)
-        readingRoom.reserveSeat(1, seatNumber)
+        val userId = "202212345"
+        val anotherUserId = "202512345"
+        readingRoom.reserveSeat(userId, seatNumber)
 
         // when & then
-        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(2, seatNumber) }
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(anotherUserId, seatNumber) }
     }
 
     @Test
@@ -25,7 +27,7 @@ class ReadingRoomTest {
         val seatNumber = SeatNumber(51)
 
         // when & then
-        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(1, seatNumber) }
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat("202212345", seatNumber) }
     }
 
     @Test
@@ -33,20 +35,20 @@ class ReadingRoomTest {
         // given
         val readingRoom = ReadingRoom(50)
         val oneSeatNumber = SeatNumber(1)
-        readingRoom.reserveSeat(1, oneSeatNumber)
+        val userId = "202212345"
+        readingRoom.reserveSeat(userId, oneSeatNumber)
         val anotherSeatNumber = SeatNumber(2)
 
         // when & then
-        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(1, anotherSeatNumber) }
+        assertThrows<IllegalArgumentException> { readingRoom.reserveSeat(userId, anotherSeatNumber) }
     }
 
     @Test
     fun `findReservedSeat는 배정받은 좌석이 없으면 null을 반환한다`(){
         // given
         val readingRoom = ReadingRoom(50)
-
         // when
-        val seatNumber: SeatNumber? = readingRoom.findReservedSeat(1)
+        val seatNumber: SeatNumber? = readingRoom.findReservedSeat("202212345")
 
         // then
         assertThat(seatNumber).isNull()
@@ -56,7 +58,7 @@ class ReadingRoomTest {
     fun `returnSeat는 좌석 반납에 성공한다`(){
         // given
         val readingRoom = ReadingRoom(50)
-        val userId = 1L;
+        val userId = "202212345";
         readingRoom.reserveSeat(userId, SeatNumber(2))
 
         // when
@@ -72,6 +74,6 @@ class ReadingRoomTest {
         val readingRoom = ReadingRoom(50)
 
         // when & then
-        assertThrows <IllegalArgumentException>{  readingRoom.returnSeat(1) }
+        assertThrows <IllegalArgumentException>{  readingRoom.returnSeat("202212345") }
     }
 }
