@@ -1,21 +1,25 @@
 package library.view
 
+import library.library.model.dto.SeatDto
 import library.model.SeatNumber
 
 class UserOutputView{
-    fun printSeatAvailabilities(availabilities : List<Boolean>){
+    fun printSeats(seats: List<SeatDto>, loginedUserId: String){
         println("열람실 좌석 현황")
-        for(i in 0..availabilities.size - 1){
-            print("${i + 1}:")
-            if(availabilities.get(i) == true){
-                print("[X]  ")
-            }
-            if(availabilities.get(i) == false){
-                print("[O]  ")
-            }
-            if((i + 1) % 10 == 0){
-                println()
-            }
+        for(i in 0..seats.size - 1){
+            printSeatNumber(i)
+            print(seats.get(i).getStatus(loginedUserId))
+            enterAtLineEnd(i)
+        }
+    }
+
+    private fun printSeatNumber(i: Int) {
+        print("${i + 1}:")
+    }
+
+    private fun enterAtLineEnd(i: Int) {
+        if ((i + 1) % 10 == 0) {
+            println()
         }
     }
 

@@ -1,5 +1,7 @@
 package library.model
 
+import library.library.model.dto.SeatDto
+
 class ReadingRoom(size: Int) {
     val seats: Array<Seat>
 
@@ -8,8 +10,8 @@ class ReadingRoom(size: Int) {
         seats = Array<Seat>(size) { i -> Seat() }
     }
 
-    fun getSeatAvailabilities(): List<Boolean> {
-        return seats.map { seat -> seat.isAvailable() }.toList()
+    fun getSeats(): List<SeatDto> {
+        return seats.map { seat -> SeatDto(seat.getUserId(), seat.isAvailable()) }.toList()
     }
 
     fun reserveSeat(userId: String, seatNumber: SeatNumber) {

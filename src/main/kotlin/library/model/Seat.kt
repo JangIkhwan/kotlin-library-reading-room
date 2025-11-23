@@ -22,4 +22,11 @@ class Seat{
     fun doReturn() {
         this.userId = null
     }
+
+    fun getUserId(): String{
+        if(userId == null){
+            return "no user"
+        }
+        return userId!!
+    }
 }
