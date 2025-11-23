@@ -1,5 +1,7 @@
 package library.view
 
+import library.model.SeatNumber
+
 class UserOutputView{
     fun printSeatAvailabilities(availabilities : List<Boolean>){
         println("열람실 좌석 현황")
@@ -27,5 +29,10 @@ class UserOutputView{
 
     fun printMessage(message: String) {
         println(message)
+    }
+
+    fun printDuplicateResevervationMessage(reservedSeat: SeatNumber) {
+        println("이미 배정받은 좌석이 존재합니다")
+        println("배정 받은 좌석은 " + reservedSeat.value + "번 입니다")
     }
 }

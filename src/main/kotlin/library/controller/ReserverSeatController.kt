@@ -12,7 +12,7 @@ class ReserverSeatController (val inputView: UserInputView, val outputView: User
         val userId = loginService.getLoginedUserId()
         val reservedSeat: SeatNumber? = readingRoom.findReservedSeat(userId)
         if(reservedSeat != null){
-            outputView.printMessage("배정받은 좌석이 존재합니다")
+            outputView.printDuplicateResevervationMessage(reservedSeat);
             return Command.USER_PROMPT
         }
         val seatNumber = inputView.getSeatToReserve()
