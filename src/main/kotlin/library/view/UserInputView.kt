@@ -18,8 +18,7 @@ class UserInputView (val userInputParser : UserInputParser){
             print("선택하세요 > ")
             val menuInput: String = Console.readLine()
             try{
-                val option : MenuOption = userInputParser.parseMenuInput(menuInput);
-                return option
+                return userInputParser.parseMenuInput(menuInput);
             }
             catch(e : RuntimeException){
                 println(e.message)
@@ -33,7 +32,7 @@ class UserInputView (val userInputParser : UserInputParser){
             print("좌석번호를 입력하세요> ")
             val number: String = Console.readLine()
             try{
-                return SeatNumber(number.toInt())
+                return userInputParser.parseSeatNumber(number)
             }
             catch (e : RuntimeException){
                 println(e.message)
