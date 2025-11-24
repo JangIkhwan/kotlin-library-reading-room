@@ -1,4 +1,4 @@
-package library.model
+package library.library.model.vo
 
 class SeatNumber(val value: Int) {
     init{

@@ -1,7 +1,7 @@
 package library.view
 
 import camp.nextstep.edu.missionutils.Console
-import library.model.MenuOption
+import library.library.model.vo.MenuOption
 import java.time.format.DateTimeFormatter
 
 class LoginAndSignupInputView {

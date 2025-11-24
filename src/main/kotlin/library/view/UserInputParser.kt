@@ -1,7 +1,7 @@
 package library.view
 
-import library.model.MenuOption
-import library.model.SeatNumber
+import library.library.model.vo.MenuOption
+import library.library.model.vo.SeatNumber
 
 class UserInputParser {
     fun parseMenuInput(menuInput: String): MenuOption{

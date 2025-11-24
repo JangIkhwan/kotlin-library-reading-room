@@ -1,7 +1,7 @@
 package library.view
 
 import library.library.model.dto.SeatDto
-import library.model.SeatNumber
+import library.library.model.vo.SeatNumber
 
 class UserOutputView{
     fun printSeats(seats: List<SeatDto>, loginedUserId: String){

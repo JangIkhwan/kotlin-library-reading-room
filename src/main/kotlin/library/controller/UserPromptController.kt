@@ -1,7 +1,7 @@
 package library.controller
 
 import library.controller.constant.Command
-import library.model.MenuOption
+import library.library.model.vo.MenuOption
 import library.view.UserInputView
 import library.view.UserOutputView
 

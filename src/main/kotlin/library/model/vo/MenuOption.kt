@@ -1,4 +1,4 @@
-package library.model
+package library.library.model.vo
 
 data class MenuOption(val value: Int){
     init{

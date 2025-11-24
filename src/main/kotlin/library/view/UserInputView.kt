@@ -1,8 +1,8 @@
 package library.view
 
 import camp.nextstep.edu.missionutils.Console
-import library.model.MenuOption
-import library.model.SeatNumber
+import library.library.model.vo.MenuOption
+import library.library.model.vo.SeatNumber
 
 class UserInputView (val userInputParser : UserInputParser){
     fun printMenu(){

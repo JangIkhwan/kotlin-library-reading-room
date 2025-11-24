@@ -2,7 +2,7 @@ package library.controller
 
 import library.controller.constant.Command
 import library.model.ReadingRoom
-import library.model.SeatNumber
+import library.library.model.vo.SeatNumber
 import library.service.LoginService
 import library.view.UserInputView
 import library.view.UserOutputView

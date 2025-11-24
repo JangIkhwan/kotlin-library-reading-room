@@ -1,6 +1,7 @@
 package library.model
 
 import library.library.model.dto.SeatDto
+import library.library.model.vo.SeatNumber
 
 class ReadingRoom(size: Int) {
     val seats: Array<Seat>

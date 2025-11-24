@@ -1,6 +1,6 @@
 package library.library.model
 
-import library.model.SeatNumber
+import library.library.model.vo.SeatNumber
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
