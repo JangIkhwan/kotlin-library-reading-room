@@ -7,7 +7,7 @@ import library.service.LoginService
 import library.view.UserInputView
 import library.view.UserOutputView
 
-class ReserverSeatController (val inputView: UserInputView, val outputView: UserOutputView, val readingRoom: ReadingRoom, val loginService: LoginService) : Controller {
+class ReserveSeatController (val inputView: UserInputView, val outputView: UserOutputView, val readingRoom: ReadingRoom, val loginService: LoginService) : Controller {
     override fun run(): Command{
         val userId = loginService.getLoginedUserId()
         val reservedSeat: SeatNumber? = readingRoom.findReservedSeat(userId)
